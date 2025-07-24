@@ -3,6 +3,12 @@
 		<title>Login</title>
 	</head>
 	<body>
-		apka swagat hai ${name}
+		welcome to login page
+		<pre>${errorMessage}</pre>
+		<form method="post">
+		    Name: <input type="text" name="name"><br>
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value="Submit">
+		</form>
 	</body>
 </html>
