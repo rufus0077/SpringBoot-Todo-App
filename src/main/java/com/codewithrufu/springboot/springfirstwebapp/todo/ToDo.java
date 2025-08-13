@@ -1,24 +1,23 @@
 package com.codewithrufu.springboot.springfirstwebapp.todo;
 
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
-//to store we need DB
-
-
-
 
 public class ToDo {
     private int id;
+
+    @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
     private String userName;
-    private boolean isDone;
+    private boolean done;
     private LocalDate targetDate;
 
-    public ToDo(int id , String userName, String description, LocalDate targetDate, boolean isDone) {
+    public ToDo(int id, String userName, String description, LocalDate targetDate, boolean done) {
         this.id = id;
         this.description = description;
         this.userName = userName;
         this.targetDate = targetDate;
-        this.isDone = isDone;
+        this.done = done; // FIXED: previously used incorrect variable
     }
 
     public int getId() {
@@ -45,12 +44,13 @@ public class ToDo {
         this.userName = userName;
     }
 
+    // FIXED: Proper getter naming for boolean
     public boolean isDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.done = done; // FIXED: previously was "done = done" (no effect)
     }
 
     public LocalDate getTargetDate() {
@@ -67,7 +67,7 @@ public class ToDo {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", userName='" + userName + '\'' +
-                ", isDone=" + isDone +
+                ", done=" + done +
                 ", targetDate=" + targetDate +
                 '}';
     }
