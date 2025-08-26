@@ -1,20 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
-
-
-
-
-
-
-<html>
-	<head>
-		<title>List Todos page</title>
-	</head>
-	<body>
 	<div class="container">
                 <h1>
                     Your todos
@@ -26,6 +12,8 @@
                         <th>Description</th>
                         <th>Target Date</th>
                         <th>Done</th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                         <tbody>
@@ -35,6 +23,8 @@
                                     <td>${todo.description}</td>
                                     <td>${todo.targetDate}</td>
                                     <td>${todo.done}</td>
+                                    <td> <a href="update-todo?id=${todo.id}" class="btn btn-info">Update</a> </td>
+                                    <td> <a href="delete-todo?id=${todo.id}" class="btn btn-warning">Delete</a> </td>
                                 </tr>
                             </c:forEach>
                          </tbody>

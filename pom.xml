@@ -85,9 +85,19 @@
 			<version>3.7.1</version>
 		</dependency>
 
-
-
-
+        <!-- Bootstrap Datepicker -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>bootstrap-datepicker</artifactId>
+            <version>1.10.0</version>
+        </dependency>
+        
+        <!-- Bootstrap Datepicker CSS -->
+<!--        <dependency>-->
+<!--            <groupId>org.webjars.npm</groupId>-->
+<!--            <artifactId>bootstrap-datepicker-css</artifactId>-->
+<!--            <version>1.10.0</version>-->
+<!--        </dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

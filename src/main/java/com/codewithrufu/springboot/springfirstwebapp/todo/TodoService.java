@@ -1,5 +1,6 @@
 package com.codewithrufu.springboot.springfirstwebapp.todo;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,5 +23,23 @@ public class TodoService {
 
         public void addTodo(String userName, String description, LocalDate targetDate, boolean isDone) {
                 todos.add(new ToDo(todos.size() + 1, userName, description, targetDate, isDone));
+        }
+
+        public void deleteById(int id) {
+                todos.removeIf(t -> t.getId() == id);
+        }
+
+        public ToDo findById(int id) {
+                ToDo todo = todos.stream().filter(t -> t.getId() == id).findFirst().get();
+                return todo;
+        }
+
+        public void updateTodo(@Valid ToDo updatedTodo) {
+                ToDo existingTodo = findById(updatedTodo.getId());
+                if (existingTodo != null) {
+                    existingTodo.setDescription(updatedTodo.getDescription());
+                    existingTodo.setTargetDate(updatedTodo.getTargetDate());
+//                    existingTodo.setDone(updatedTodo.isDone());
+                }
         }
 }
