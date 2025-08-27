@@ -1,13 +1,22 @@
 package com.codewithrufu.springboot.springfirstwebapp.todo;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
+
+@Entity
+@Table(name = "todo")
 public class ToDo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
+    
+    @Column(name = "user_name")
     private String userName;
     private boolean done;
     private LocalDate targetDate;

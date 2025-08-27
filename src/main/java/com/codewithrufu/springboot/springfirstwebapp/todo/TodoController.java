@@ -21,10 +21,13 @@ public class TodoController {
 
     @RequestMapping("/list-todos")
     public String listTodos(ModelMap model) {
-        List<ToDo> todos = todoService.findByUsername("Rufu");
+        String username = getLoggedInUsername(model);
+        List<ToDo> todos = todoService.findByUsername(username);
         model.put("todos", todos);
         return "listTodos";
     }
+
+
 
 
     // so initially it handles all the requests lige GET, POST, PUT, DELETE all to vary it see next function
@@ -36,7 +39,7 @@ public class TodoController {
 
     @RequestMapping(value="/add-todo", method= RequestMethod.GET)
     public String showNewTodoPage(ModelMap model) {
-        String username = (String)model.get("name");
+        String username = getLoggedInUsername(model);
         if (username == null) {
             // If name is not in model, redirect to login or set a default value
             return "redirect:login"; // or set a default username
@@ -89,6 +92,10 @@ public class TodoController {
         return "redirect:list-todos";
     }
 
+
+    private static String getLoggedInUsername(ModelMap model) {
+        return (String) model.get("name");
+    }
 
 
 
