@@ -9,6 +9,9 @@ import java.time.LocalDate;
 @Table(name = "todo")
 public class ToDo {
 
+    public ToDo() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
